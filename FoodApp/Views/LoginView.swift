@@ -14,31 +14,30 @@ struct LoginView: View {
         NavigationView{
             VStack{
                 //header
-              HeaderView()
+                HeaderView(title: "hoş geldiniz", subtitle: "siparişinizi verin getirelim ", angle: 16, background: .red)
+                
                 //Login form
                 Form{
                     TextField("email adrasiniz", text:$email)
                         .textFieldStyle(DefaultTextFieldStyle())
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
                     SecureField("şifreniz", text: $password)
                         .textFieldStyle(DefaultTextFieldStyle())
                     
-                    Button(action: {
-                        //giriş işlemleri
-                    }, label: {
-                        ZStack {
-                            RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
-                            Text("giriş")
-                                .foregroundStyle(Color.white)
-                                .bold()
-                        }
-                    }).padding(.bottom,45)
+
+                    FButton(title: "giriş", background: .blue){
+                          //giriş işlemleri.
+                    }
+                        .padding(.bottom,40)
                 }
+                .offset(y: -40)
                
                 //create account
                 VStack {
                     Text("yeni bir hesap için")
                     NavigationLink("hesap oluşturun", destination: RegisterView())
-                }.padding(.bottom,50)
+                }.padding(.bottom,30)
                 
                 Spacer()
             }

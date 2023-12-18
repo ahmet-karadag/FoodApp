@@ -9,7 +9,33 @@ import SwiftUI
 
 struct RegisterView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        @State var name = ""
+        @State var email = ""
+        @State var password = ""
+        
+        VStack{
+            //header
+            HeaderView(title: "kayıt olun ", subtitle: "sipariş vermeye başlayın", angle: -16, background: .green)
+            
+            Form{
+                TextField("adınız", text: $name)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .autocorrectionDisabled()
+                TextField("email", text: $email)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                SecureField("şifreniz", text: $password)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                
+                FButton(title: "hesap oluşturun", background: .blue){
+                      //kayıt işlemleri
+                }
+                .padding(.bottom,40)
+            }
+            .offset(y: -40)
+            Spacer()
+        }
     }
 }
 
